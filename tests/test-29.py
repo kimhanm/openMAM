@@ -45,4 +45,3 @@ class Test(Base):
 
 # instantiate and run class
 Test().run()
-
