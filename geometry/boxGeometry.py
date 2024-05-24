@@ -1,5 +1,4 @@
 from geometry.geometry import Geometry
-from core.attribute import Attribute
 
 class BoxGeometry(Geometry):
     def __init__(self, width=1, height=1, depth=1):
@@ -46,8 +45,8 @@ class BoxGeometry(Geometry):
                         P1, P0, P2,  P1, P2, P3]
         colorData =    [C1]*6 + [C2]*6 + [C3]*6 + [C4]*6 + [C5]*6 + [C6]*6
         
-        self.attributes["vertexPosition"] = Attribute("vec3", positionData)
-        self.attributes["vertexColor"]    = Attribute("vec3", colorData)
+        self.addAttribute("vec3", "vertexPosition", positionData)
+        self.addAttribute("vec3", "vertexColor", colorData)
         
         self.countVertices()
         

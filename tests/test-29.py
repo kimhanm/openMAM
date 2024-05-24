@@ -14,16 +14,15 @@ from material.surfaceBasicMaterial import SurfaceBasicMaterial
 # render a scene
 class Test(Base):
     def initialize(self):
-        print("Initializing Program...")
-        
         # setup objects
         self.renderer   = Renderer()
         self.scene      = Scene()
         self.camera     = Camera()
         geometry        = BoxGeometry(width=0.5, height=0.5, depth=0.5)
         material        = SurfaceBasicMaterial({"useVertexColors":1})
-        self.mesh = Mesh(geometry, material)
-        self.scene.add(self.mesh)
+        #material        = SurfaceBasicMaterial({"baseColor":[0,1,0]})
+        self.cube = Mesh(geometry, material)
+        self.scene.add(self.cube)
         
         # pull camera towards +z axis
         self.camera.setPosition(0,0,4)
@@ -36,10 +35,9 @@ class Test(Base):
         #self.scene.add(backdrop)
 
     def update(self):
-        #self.mesh.translate(0.0,0.0,0.001)
-        self.mesh.rotateX(0.01)
-        self.mesh.rotateY(0.015)
-        self.mesh.rotateZ(0.0175)
+        self.cube.rotateX(0.01)
+        self.cube.rotateY(0.015)
+        self.cube.rotateZ(0.0175)
         self.renderer.render(self.scene, self.camera)
         
 

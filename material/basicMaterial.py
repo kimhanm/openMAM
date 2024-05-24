@@ -26,7 +26,7 @@ class BasicMaterial(Material):
         out vec4 fragColor;
         void main() {
             vec4 tmpColor = vec4(baseColor, 1.0);
-            if (useVertexColors ) {
+            if ( useVertexColors ) {
                 tmpColor *= vec4(color, 1.0);
             }
             fragColor = tmpColor;

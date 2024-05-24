@@ -5,6 +5,7 @@
 # default objects will contain default colors
 # to make shape understandable
 
+from core.attribute import Attribute
 
 class Geometry():
     def __init__(self):
@@ -18,3 +19,7 @@ class Geometry():
         # _any_ attribute object's array
         attrib = list (self.attributes.values() )[0]
         self.vertexCount = len(attrib.data)
+
+    def addAttribute(self, dataType, variableName, data):
+        self.attributes[variableName] = Attribute(dataType, data)
+
