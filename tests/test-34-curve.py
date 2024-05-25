@@ -3,8 +3,8 @@ from core.renderer  import Renderer
 from core.scene     import Scene
 from core.camera    import Camera
 from core.mesh      import Mesh
-from geometry.geometry import Geometry
-from material.material import Material
+from geometry.circle2DGeometry import Circle2DGeometry
+from material.lineBasicMaterial import LineBasicMaterial
 
 # render a scene
 class Test(Base):
@@ -15,8 +15,9 @@ class Test(Base):
         self.camera     = Camera()
         self.camera.setPosition(0,0,4)
 
-        #geometry        = BoxGeometry(width=0.5, height=0.5, depth=0.5)
-        #material        = SurfaceBasicMaterial({"useVertexColors":1})
+        geometry        = Circle2DGeometry(segments=10)
+        material        = LineBasicMaterial({"lineWidth":16,"lineType":"connected","useVertexColors":1})
+        #material        = LineBasicMaterial({"useVertexColors":1,"lineWidth":4})
         self.mesh = Mesh(geometry, material)
         self.scene.add(self.mesh)
 

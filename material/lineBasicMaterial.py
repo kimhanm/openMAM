@@ -1,9 +1,9 @@
-from material.BasicMaterial import BasicMaterial
+from material.basicMaterial import BasicMaterial
 from OpenGL.GL import *
 
 class LineBasicMaterial(BasicMaterial):
-    def __init__(self, properties={})
-        super().__init_()
+    def __init__(self, properties={}):
+        super().__init__()
 
         # render settings for lines
         # drawStyle: GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES
@@ -11,8 +11,7 @@ class LineBasicMaterial(BasicMaterial):
         # lineType: "connected", "loop", "segments"
         self.settings["lineType"] = "connected"
         self.settings["lineWidth"] = 2
-        
-       self.setProperties(properties) 
+        self.setProperties(properties) 
     
     def updateRenderSettings(self):
         glLineWidth(self.settings["lineWidth"])

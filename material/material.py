@@ -30,6 +30,6 @@ class Material(object):
             if name in self.uniforms.keys():
                 self.uniforms[name].data = data
             elif name in self.settings.keys():
-                self.settings[name].data = data
+                self.settings[name] = data
             else:
                 raise Exception("Material has no property: " + name)
