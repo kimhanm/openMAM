@@ -19,7 +19,8 @@ class Test(Base):
 
         #geometry        = SphereGeometry(radius=1, resolution=16)
         #geometry        = EllipsoidGeometry(width=1, height=0.8, depth=1.5, resolution=16)
-        geometry        = CylinderGeometry(radius=0.5, length=2, resolution=16)
+        #geometry        = CylinderGeometry(radius=0.5, length=2, resolution=16)
+        geometry        = CylinderGeometry(radius=0.5, length=2, radialSegments=3, heightSegments=10)
         material        = SurfaceBasicMaterial({"useVertexColors":1})
         self.mesh = Mesh(geometry, material)
         self.scene.add(self.mesh)
