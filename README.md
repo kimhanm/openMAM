@@ -2,8 +2,12 @@
 A simple music animation engine based on Lee Stemkoski's "Developing Graphics Frameworks with Python and OpenGL" video series.
 
 ## Installation
-1. `git clone `
-2. `pip install --requirement requirements.txt`
+Ensure python and pip are installed.
+```bash
+git clone https://github.com/kimhanm/openMAM.git && cd openMAM
+
+pip install --requirement requirements.txt
+```
 
 ## Usage
 1. save midi file to `./midi/`.
