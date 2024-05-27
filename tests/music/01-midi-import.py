@@ -7,7 +7,6 @@ from extras.movementRig import MovementRig
 from midi.midi      import parse_midi
 import mido
 
-#from core.mesh      import Mesh
 
 # render a scene
 class Test(Base):
@@ -18,26 +17,29 @@ class Test(Base):
         self.part = Scene()
         # add camera to movement rig
         self.camera     = Camera()
-        self.rig = MovementRig(unitsPerSecond=8)
+        self.bpm = 180
+        self.rig = MovementRig(unitsPerSecond=self.bpm/10)
         self.rig.add(self.camera)
         self.scene.add(self.rig)
         self.paused = False
         
         self.rig.setPosition(0,0,6)
 
-        self.bpm = 60
-
         mido.set_backend('mido.backends.pygame')
         print("Using backend: ")
         print(mido.backend)
         
-        midi_file_path = './midi/chaconne.mid'
+        #midi_file_path = './midi/chaconne.mid'
+        #midi_file_path = './midi/arpa.mid' # super laggy
+        #midi_file_path = './midi/playing-minecraft.mid'
+        midi_file_path = './midi/outro.mid'
         notes = parse_midi(midi_file_path,scaling_factor = 1/500)
         
         for note in notes:
             self.part.add(note)
         self.scene.add(self.part)
-
+        
+        print("move: wasd\n" + "up/down/sprint: space,ctrl,shift\n" + "look: hjkl")
 
     def update(self):
         if self.input.isKeyDown("return"):

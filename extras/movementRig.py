@@ -3,7 +3,7 @@ from numpy import pi, float32, array
 from numpy.linalg import norm
 
 class MovementRig(Object3D):
-    def __init__(self, unitsPerSecond=1, degreesPerSecond=60):
+    def __init__(self, unitsPerSecond=1, degreesPerSecond=90):
         
         super().__init__()
         self.unitsPerSecond = unitsPerSecond
@@ -14,16 +14,17 @@ class MovementRig(Object3D):
         self.children = [self.lookAttachment]
         self.lookAttachment.parent = self
         
-        # customizable key bindings
+        # ===KEYBINDINGS===
         self.KEY_MOVE_FORWARDS  = "w"
         self.KEY_MOVE_LEFT      = "a"
         self.KEY_MOVE_BACKWARDS = "s"
         self.KEY_MOVE_RIGHT     = "d"
-        
-        self.KEY_TURN_LEFT      = "h"
-        self.KEY_TURN_RIGHT     = "l"
         self.KEY_MOVE_UP        = "space"
         self.KEY_MOVE_DOWN      = "left ctrl"
+        self.KEY_SPRINT         = "left shift"
+
+        self.KEY_TURN_LEFT      = "h"
+        self.KEY_TURN_RIGHT     = "l"
         self.KEY_LOOK_UP        = "k"
         self.KEY_LOOK_DOWN      = "j"
 
@@ -51,6 +52,8 @@ class MovementRig(Object3D):
         if not norm(direction) == 0:
             factor = self.unitsPerSecond * dt / norm(direction)
             direction *= factor
+        if inputObject.isKeyPressed(self.KEY_SPRINT):
+            direction *= 5
         self.translate(direction[0],direction[1],direction[2])
 
         if inputObject.isKeyPressed(self.KEY_TURN_LEFT):
