@@ -1,3 +1,4 @@
+#deprecated
 from core.object3D  import Object3D
 from music.note     import Note
 class Phrase(Object3D):

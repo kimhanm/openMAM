@@ -1,3 +1,4 @@
+#deprecated
 from core.base      import Base
 from core.renderer  import Renderer
 from core.scene     import Scene

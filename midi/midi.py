@@ -1,17 +1,8 @@
 import mido
-
-class Note:
-    def __init__(self, note, start_time, duration, velocity):
-        self.note = note
-        self.start_time = start_time
-        self.duration = duration
-        self.velocity = velocity
-
-    def __repr__(self):
-        return f"Note(note={self.note}, start_time={self.start_time}, duration={self.duration}, velocity={self.velocity})"
+from music.note import Note
 
 
-def parse_midi(file_path):
+def parse_midi(file_path,scaling_factor=1/500):
     midi = mido.MidiFile(file_path)
     notes = []
     note_on_events = {}
@@ -27,6 +18,7 @@ def parse_midi(file_path):
                 if (msg.note, msg.channel) in note_on_events:
                     start_time, velocity = note_on_events.pop((msg.note, msg.channel))
                     duration = current_time - start_time
-                    notes.append(Note(msg.note, start_time, duration, velocity))
+                    # rescale ms to s
+                    notes.append(Note(msg.note, start_time * scaling_factor, duration * scaling_factor, velocity))
 
     return notes
