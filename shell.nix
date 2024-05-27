@@ -8,6 +8,7 @@ in pkgs.mkShell {
       pygame
       pyopengl
       pyopengl-accelerate
+      lxml # parse musicxml
     ]))
   ];
 }
