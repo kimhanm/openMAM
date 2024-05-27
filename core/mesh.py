@@ -9,11 +9,11 @@ from OpenGL.GL import *
 #  variable names and attribute objects
 # material contains program
 class Mesh(Object3D):
-    def __init__(self, geometry, material):
+    def __init__(self, geometry, material,visible=True):
         super().__init__()
         self.geometry = geometry
         self.material = material
-        self.visible = True
+        self.visible = visible
         
         # set up associations between 
         # attributes in geometry and 

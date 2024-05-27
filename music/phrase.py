@@ -6,7 +6,12 @@ class Phrase(Object3D):
         super().__init__()
         time=0
         for note in noteList:
-            self.add(Note(note[0],time,time + note[1]))
+            if len(note) == 3:
+                self.add(Note(note[0],time,time + note[1],visible=note[2]))
+            elif len(note) == 4:
+                self.add(Note(note[0],time,time + note[1],visible=note[2],color=note[3]))
+            else:
+                self.add(Note(note[0],time,time + note[1]))
             time += note[1]
     
             
