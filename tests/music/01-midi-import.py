@@ -3,9 +3,9 @@ from core.renderer  import Renderer
 from core.scene     import Scene
 from core.camera    import Camera
 from music.note     import Note
-from extras.movementRig import MovementRig
-from midi.midi      import parse_midi
+from music.midi     import parse_midi
 import mido
+from extras.movementRig import MovementRig
 
 
 # render a scene
