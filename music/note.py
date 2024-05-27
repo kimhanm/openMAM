@@ -1,3 +1,4 @@
+#deprecated
 from core.mesh import Mesh
 from geometry.rectangleGeometry import RectangleGeometry
 from material.surfaceBasicMaterial import SurfaceBasicMaterial
