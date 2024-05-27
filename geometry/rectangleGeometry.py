@@ -1,5 +1,5 @@
 from geometry.geometry import Geometry
-from core.attribute import attribute
+from core.attribute import Attribute
 
 class RectangleGeometry(Geometry):
     # create rectangle in xy-plane centered around origin
