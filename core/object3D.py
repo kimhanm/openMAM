@@ -43,36 +43,22 @@ class Object3D():
     
     def translate(self, x,y,z, localCoord=True):
         m = Matrix.makeTranslation(x,y,z)
-        if localCoord:
-            self.transform = self.transform @ m
-        else:
-            self.transform = m @ self.transform
+        self.applyMatrix(m,localCoord)
 
     def rotateX(self, angle, localCoord=True):
         m = Matrix.makeRotationX(angle)
-        if localCoord:
-            self.transform = self.transform @ m
-        else:
-            self.transform = m @ self.transform
+        self.applyMatrix(m,localCoord)
     def rotateY(self, angle, localCoord=True):
         m = Matrix.makeRotationY(angle)
-        if localCoord:
-            self.transform = self.transform @ m
-        else:
-            self.transform = m @ self.transform
+        self.applyMatrix(m,localCoord)
+
     def rotateZ(self, angle, localCoord=True):
         m = Matrix.makeRotationZ(angle)
-        if localCoord:
-            self.transform = self.transform @ m
-        else:
-            self.transform = m @ self.transform
+        self.applyMatrix(m,localCoord)
     
     def scale(self, factor, localCoord=True):
         m = Matrix.makeScale(factor)
-        if localCoord:
-            self.transform = self.transform @ m
-        else:
-            self.transform = m @ self.transform
+        self.applyMatrix(m,localCoord)
         
     # get/set position components of transformation matrix
     def getPosition(self):

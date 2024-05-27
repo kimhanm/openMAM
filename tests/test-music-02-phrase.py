@@ -2,6 +2,7 @@ from core.base      import Base
 from core.renderer  import Renderer
 from core.scene     import Scene
 from core.camera    import Camera
+from core.matrix    import Matrix
 from music.phrase   import Phrase
 from extras.movementRig import MovementRig
 
@@ -30,8 +31,13 @@ class Test(Base):
         self.paused = False
 
     def update(self):
-        if len(self.input.keyDownList) > 0:
-            print ("Keys down:", self.input.keyDownList)
+        if self.input.isKeyDown("return"):
+            # reset rig and camera on rig
+            self.camera.setPosition(0,0,0)
+            self.camera.transform = Matrix.makeIdentity()
+            self.rig.transform = Matrix.makeIdentity()
+            self.rig.setPosition(0,0,4)
+            self.subScene.setPosition(0,0,0)
         self.rig.update(self.input, 1/60)
         if self.input.isKeyDown("p"):
             self.paused = not self.paused
