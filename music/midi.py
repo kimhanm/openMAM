@@ -2,7 +2,7 @@ import mido
 from music.note import Note
 
 
-def parse_midi(file_path,scaling_factor=1/500):
+def parse_midi(file_path,scaling_factor=1/500,properties={}):
     midi = mido.MidiFile(file_path)
     notes = []
     note_on_events = {}
@@ -19,6 +19,6 @@ def parse_midi(file_path,scaling_factor=1/500):
                     start_time, velocity = note_on_events.pop((msg.note, msg.channel))
                     duration = current_time - start_time
                     # rescale ms to s
-                    notes.append(Note(msg.note, start_time * scaling_factor, duration * scaling_factor, velocity))
+                    notes.append(Note(msg.note, start_time * scaling_factor, duration * scaling_factor, velocity,properties=properties))
 
     return notes

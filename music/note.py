@@ -6,7 +6,7 @@ from material.surfaceBasicMaterial import SurfaceBasicMaterial
 # 1 Octave is set to unit length
 # middle C = note 60
 class Note(Mesh):
-    def __init__(self, note=60,start_time=0,duration=1,velocity=80):
+    def __init__(self, note=60,start_time=0,duration=1,velocity=80,properties={}):
         self.note=note
         self.start_time = start_time
         self.duration= duration
@@ -15,6 +15,7 @@ class Note(Mesh):
         geometry = RectangleGeometry(self.duration - self.border, height=1/6 - self.border)
         material = SurfaceBasicMaterial({"baseColor":[0,1,0]})
         super().__init__(geometry, material)
+        material.setProperties(properties)
         self.translate(self.start_time + self.duration/2, (self.note - 60)/12,0)
 
     def __repr__(self):
