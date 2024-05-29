@@ -3,7 +3,7 @@ import sys
 from core.input import Input
 
 class Base:
-    def __init__(self):
+    def __init__(self,fps=60):
         pygame.init()
         screenSize = (512, 512)
         displayFlags = pygame.DOUBLEBUF | pygame.OPENGL
@@ -22,7 +22,7 @@ class Base:
         self.running = True
         self.clock = pygame.time.Clock()
         self.input = Input()
-        self.fps = 60
+        self.fps = fps
 
     # abstract methods
     def initialize(self):

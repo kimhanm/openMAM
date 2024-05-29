@@ -34,17 +34,30 @@ class Test(Base):
         midi_file_path = './midi/arpa.mid' # super laggy
         #midi_file_path = './midi/playing-minecraft.mid'
         #midi_file_path = './midi/outro.mid'
-        notes = parse_midi(midi_file_path,scaling_factor = 1/500)
+        self.noteQueue = parse_midi(midi_file_path,scaling_factor = 1/500)
+        self.removeQueue = []
+
+        self.time = 0
+        self.timeWindow = 2 * self.bpm/self.fps 
         
-        for note in notes:
-            self.part.add(note)
         self.scene.add(self.part)
         print("number of notes: ")
-        print(len(notes))
+        print(len(self.noteQueue))
         
         print("move: wasd\n" + "up/down/sprint: space,ctrl,shift\n" + "look: hjkl")
 
     def update(self):
+        self.time += self.bpm / (self.fps * 60)
+        for note in self.noteQueue:
+            if note.start_time <= self.time:
+                self.part.add(note)
+                self.noteQueue.remove(note)
+                self.removeQueue.append(note)
+        for note in self.removeQueue:
+            if note.start_time + note.duration + self.timeWindow <= self.time:
+                self.part.remove(note)
+                self.removeQueue.remove(note)
+
         if self.input.isKeyDown("return"):
             # reset rig and camera on rig
             self.camera.setPosition(0,0,0)
