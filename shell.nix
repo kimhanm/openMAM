@@ -2,6 +2,8 @@ let
   pkgs = import <nixpkgs> {};
 in pkgs.mkShell {
   packages = [
+    pkgs.lilypond
+    pkgs.ffmpeg
     (pkgs.python3.withPackages (pp: with pp; [
       # check python3Packages attribute set in nix repl for list
       numpy
