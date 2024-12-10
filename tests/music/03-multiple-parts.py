@@ -30,10 +30,10 @@ class Test(Base):
         print("Using backend: ")
         print(mido.backend)
         
-        violin1 = './midi/arpa-violin1.mid'
-        violin2 = './midi/arpa-violin2.mid'
-        viola = './midi/arpa-viola.mid'
-        cello = './midi/arpa-cello.mid'
+        violin1 = './midi/violin1.mid'
+        violin2 = './midi/violin2.mid'
+        viola = './midi/viola.mid'
+        cello = './midi/cello.mid'
         self.noteQueue = []
         self.noteQueue += parse_midi(violin1,scaling_factor = 1/500,properties={"baseColor":[1.0, 0.9, 0.0]})
         self.noteQueue += parse_midi(violin2,scaling_factor = 1/500,properties={"baseColor":[0.1, 0.9, 0.1]})

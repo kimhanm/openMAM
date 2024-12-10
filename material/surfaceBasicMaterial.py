@@ -21,6 +21,6 @@ class SurfaceBasicMaterial(BasicMaterial):
             glEnable(GL_CULL_FACE)
         if self.settings["wireframe"]:
             glPolygonMode(GL_FRONT_AND_BACK, GL_LINE)
+            glLineWidth(self.settings["lineWidth"])
         else:
             glPolygonMode(GL_FRONT_AND_BACK, GL_FILL)
-        glLineWidth(self.settings["lineWidth"])

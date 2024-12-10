@@ -67,6 +67,6 @@ class Object3D():
                  self.transform.item(2,3) ]
 
     def setPosition(self, x, y, z):
-        self.transform.itemset((0,3), x)
-        self.transform.itemset((1,3), y)
-        self.transform.itemset((2,3), z)
+        self.transform[0,3] = x
+        self.transform[1,3] = y
+        self.transform[2,3] = z

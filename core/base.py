@@ -7,7 +7,7 @@ class Base:
         pygame.init()
         screenSize = (512, 512)
         displayFlags = pygame.DOUBLEBUF | pygame.OPENGL
-        
+
         
         # antialiasing
         pygame.display.gl_set_attribute(pygame.GL_MULTISAMPLEBUFFERS, 1)

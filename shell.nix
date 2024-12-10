@@ -6,11 +6,11 @@ in pkgs.mkShell {
     pkgs.ffmpeg
     (pkgs.python3.withPackages (pp: with pp; [
       # check python3Packages attribute set in nix repl for list
-      numpy
+      #numpy
       pip
       pygame
       pyopengl
-      pyopengl-accelerate
+      #pyopengl-accelerate
       mido # MIDI
     ]))
     #pkgs.rtmidi
